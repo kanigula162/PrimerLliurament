@@ -10,7 +10,6 @@ public class Main {
     public static void main(String[] args) {
 
         int seleccio;
-        int index = 0;
         ArrayList<Redactor> redactors = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 

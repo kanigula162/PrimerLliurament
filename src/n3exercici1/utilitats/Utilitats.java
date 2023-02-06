@@ -15,7 +15,7 @@ public class Utilitats {
         String nom = "";
         StringBuilder nom_corregit = new StringBuilder();
         String[] noms;
-        int errors = 0;
+        int errors;
 
         do {
 
@@ -30,6 +30,8 @@ public class Utilitats {
 
                 if(!nom.matches("[a-zA-z]+([ '-][a-zA-Z]+)*")){
                     throw new ErrorNom(">>> El nom introduït te caràcters no vàlids\n");
+                }else{
+                    errors = 0;
                 }
             }catch (ErrorNom  e){
                 errors = 1;
