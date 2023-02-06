@@ -1,8 +1,10 @@
 package n3exercici1.utilitats;
 
+import n3exercici1.Redactor;
 import n3exercici1.exceptions.ErrorDNI;
 import n3exercici1.exceptions.ErrorNom;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Utilitats {
@@ -22,11 +24,11 @@ public class Utilitats {
                 nom = sc.nextLine();
 
                 if(nom.isEmpty()){
-                    throw new ErrorNom("El nom no pot estar en blanc\n");
+                    throw new ErrorNom(">>> El nom no pot estar en blanc\n");
                 }
 
                 if(!nom.matches("[a-zA-z]+([ '-][a-zA-Z]+)*")){
-                    throw new ErrorNom("El nom introduït te caràcters no vàlids\n");
+                    throw new ErrorNom(">>> El nom introduït te caràcters no vàlids\n");
                 }
             }catch (ErrorNom  e){
                 errors = 1;
@@ -68,16 +70,16 @@ public class Utilitats {
                 dni = sc.next();
 
                 if(dni.isEmpty()){
-                    throw new ErrorDNI("El DNI no pot estar en blanc\n");
+                    throw new ErrorDNI(">>> El DNI no pot estar en blanc\n");
                 }
 
                 if(!dni.matches("[0-9]{8}[a-zA-Z]")){
 
                     if(dni.matches("[0-9]{8}")){
-                        throw new ErrorDNI("Manca la lletra al DNI introduït\n");
+                        throw new ErrorDNI(">>> Manca la lletra al DNI introduït\n");
                     }
 
-                    throw new ErrorDNI("El DNI introduït te caràcters no vàlids\n");
+                    throw new ErrorDNI(">>> El DNI introduït te caràcters no vàlids\n");
 
                 }else{
                     dni_num = dni.substring(0, dni.length() - 1);
@@ -85,8 +87,9 @@ public class Utilitats {
 
                     if(lletres[num].equalsIgnoreCase(dni.substring(dni.length() -1))){
                         dni = dni.toUpperCase();
+                        errors = 0;
                     }else{
-                        throw new ErrorDNI("La lletra del DNI no es correcta\n");
+                        throw new ErrorDNI(">>> La lletra del DNI no es correcta\n");
                     }
 
                 }
@@ -99,4 +102,21 @@ public class Utilitats {
 
         return dni;
     }
+
+    public static void imprimirRedactors(ArrayList<Redactor> redactors){
+
+        int index = 1;
+
+        if(redactors.isEmpty()){
+            System.out.println(">>> No hi ha cap redactor/a creats\n");
+        }else{
+            for (Redactor r:redactors) {
+                System.out.println(index + " - Nombre: " + r.getNom() + " DNI: " + r.getDni());
+                index++;
+            }
+
+        }
+    }
+
+
 }

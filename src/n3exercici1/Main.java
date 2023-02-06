@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
         int seleccio;
+        int index = 0;
         ArrayList<Redactor> redactors = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
@@ -35,7 +36,6 @@ public class Main {
                         case 1:
 
                             String nom = Utilitats.nomRedactor();
-                            System.out.println(nom);
                             String dni = Utilitats.dniRedactor();
                             redactors.add(new Redactor(nom, dni));
                             System.out.println("Redactor/a creat/da correctament\n");
@@ -43,6 +43,7 @@ public class Main {
                             break;
 
                         case 2:
+                            Utilitats.imprimirRedactors(redactors);
                             break;
                         case 3:
                             break;
