@@ -1,5 +1,8 @@
 package n3exercici1;
 
+import n3exercici1.utilitats.Utilitats;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -7,6 +10,8 @@ public class Main {
     public static void main(String[] args) {
 
         int seleccio;
+        ArrayList<Redactor> redactors = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
 
         do{
             System.out.println("1.- Introduir redactor/a.");
@@ -19,11 +24,39 @@ public class Main {
             System.out.println("8.- Sortir.");
 
             try{
-                Scanner sc = new Scanner(System.in);
                 seleccio = Integer.parseInt(sc.next());
 
                 if(seleccio < 1 || seleccio > 8){
                     System.out.println("\n>>> Seleccioni un valor del 1 al 8 siusplau <<<\n");
+                }else{
+
+                    switch (seleccio){
+
+                        case 1:
+
+                            String nom = Utilitats.nomRedactor();
+                            System.out.println(nom);
+                            String dni = Utilitats.dniRedactor();
+                            redactors.add(new Redactor(nom, dni));
+                            System.out.println("Redactor/a creat/da correctament\n");
+
+                            break;
+
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+
+                    }
+
                 }
 
             }catch (Exception e){
@@ -35,4 +68,6 @@ public class Main {
         System.out.println("\n#########> FI DEL PROGRAMA <##########");
         System.exit(0);
     }
+
+
 }
