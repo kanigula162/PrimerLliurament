@@ -4,6 +4,7 @@ import n3exercici1.Redactor;
 import n3exercici1.exceptions.ErrorDNI;
 import n3exercici1.exceptions.ErrorNom;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +13,7 @@ public class Utilitats {
     public static String nomRedactor() {
 
         String nom = "";
-        String nom_corregit = "";
+        StringBuilder nom_corregit = new StringBuilder();
         String[] noms;
         int errors = 0;
 
@@ -39,23 +40,22 @@ public class Utilitats {
 
         noms = nom.split("\\s");
 
-        for (int i = 0; i < noms.length; i++){
-            nom_corregit += noms[i].substring(0, 1).toUpperCase() + noms[i].substring(1).toLowerCase();
+        for (String s : noms) {
+            nom_corregit.append(s.substring(0, 1).toUpperCase()).append(s.substring(1).toLowerCase());
 
-            if(noms.length > 0){
-                nom_corregit += " ";
+            if (Array.getLength(noms) > 0) {
+                nom_corregit.append(" ");
             }
         }
 
-        return nom_corregit;
+        return nom_corregit.toString();
     }
 
     public static String dniRedactor() {
 
         String dni = null;
         String dni_num;
-        String dni_lletra;
-        int errors = 0;
+        int errors;
         int num;
         String[] lletres = {
                 "T", "R", "W","A","G","M","Y","F","P","D","X",
