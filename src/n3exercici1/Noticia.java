@@ -1,6 +1,6 @@
 package n3exercici1;
 
-public abstract class Noticia {
+public class Noticia {
 
     private String titular;
     private String text = "";

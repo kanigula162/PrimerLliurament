@@ -11,6 +11,7 @@ public class Main {
 
         int seleccio;
         ArrayList<Redactor> redactors = new ArrayList<>();
+        ArrayList<Noticia> noticies = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
         do{
@@ -24,6 +25,7 @@ public class Main {
             System.out.println("8.- Sortir.");
 
             try{
+                System.out.println("\nSeleccioni una opció:");
                 seleccio = Integer.parseInt(sc.next());
 
                 if(seleccio < 1 || seleccio > 8){
@@ -42,9 +44,18 @@ public class Main {
                             break;
 
                         case 2:
-                            Utilitats.imprimirRedactors(redactors);
+
+                            Utilitats.eliminarRedactors(redactors);
+
                             break;
                         case 3:
+
+                            if(Utilitats.hiHaRedactors(redactors)){
+                                Utilitats.crearNoticia();
+                            }else{
+                                System.out.println(">>> No hi ha redactors donats d'alta, per favor, doni d'alta algún redactor primer\n");
+                            }
+
                             break;
                         case 4:
                             break;
