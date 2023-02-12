@@ -1,6 +1,5 @@
 package n3exercici1.utilitats;
 
-import n3exercici1.Noticia;
 import n3exercici1.Redactor;
 import n3exercici1.exceptions.ErrorDNI;
 import n3exercici1.exceptions.ErrorNom;
@@ -168,6 +167,7 @@ public class Utilitats {
 
         boolean tornar = true;
         int seleccio = 0;
+        String titular, competicio, club, jugador, tenistes, escuderia, equip;
 
         do{
             try{
@@ -203,19 +203,14 @@ public class Utilitats {
 
         switch (seleccio){
             case 1:
-                String titular = dadesNoticia("titular");
-                String competicio = dadesNoticia("competició");
-                String club = dadesNoticia("club");
-                String jugador = dadesNoticia("jugador");
+                titular = dadesNoticia("titular");
+                competicio = dadesNoticia("competició");
+                club = dadesNoticia("club");
+                jugador = dadesNoticia("jugador");
 
-                System.out.println("""
-                        Titular: %s
-                        Competició: %s
-                        Club: %s
-                        Jugador: %s
-                        """.formatted(titular, competicio, club, jugador));
                 break;
             case 2:
+
                 break;
             case 3:
                 break;
@@ -261,5 +256,49 @@ public class Utilitats {
         }while(tornar);
 
         return dada;
+    }
+
+    private static String crearTextNoticia(){
+
+        boolean sortir = true;
+        int eleccio = 0;
+        String text = "";
+
+        do{
+
+            try{
+                System.out.println("Vos asignar un text a la notícia: ");
+                System.out.println("1 - Sí");
+                System.out.println("2 - No");
+                Scanner sc = new Scanner(System.in);
+                eleccio = sc.nextInt();
+
+                if(eleccio == 1 || eleccio == 2){
+                    sortir = false;
+                }
+            }catch (InputMismatchException e){
+                System.out.println(">>> El dígit introduït no es correcta\n");
+            }
+
+        }while (sortir);
+
+        sortir = true;
+
+        if(eleccio == 1){
+            do{
+                System.out.println("Escriu el teu text: ");
+                Scanner sc = new Scanner(System.in);
+                text = sc.nextLine();
+
+                if(text.isEmpty()){
+                    System.out.println(">>> El text no pot estar buit\n");
+                }else{
+                    sortir = false;
+                }
+            }while (sortir);
+        }
+
+        return text;
+
     }
 }
