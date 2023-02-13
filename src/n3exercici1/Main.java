@@ -34,37 +34,29 @@ public class Main {
 
                     switch (seleccio){
 
-                        case 1:
+                        case 1->{
 
                             String nom = Utilitats.nomRedactor();
                             String dni = Utilitats.dniRedactor();
                             redactors.add(new Redactor(nom, dni));
                             System.out.println("Redactor/a creat/da correctament\n");
+                        }
 
-                            break;
+                        case 2-> Utilitats.eliminarRedactors(redactors);
 
-                        case 2:
-
-                            Utilitats.eliminarRedactors(redactors);
-
-                            break;
-                        case 3:
+                        case 3->{
 
                             if(Utilitats.hiHaRedactors(redactors)){
                                 Utilitats.crearNoticia();
                             }else{
                                 System.out.println(">>> No hi ha redactors donats d'alta, per favor, doni d'alta algún redactor primer\n");
                             }
+                        }
 
-                            break;
-                        case 4:
-                            break;
-                        case 5:
-                            break;
-                        case 6:
-                            break;
-                        case 7:
-                            break;
+                        case 4->{}
+                        case 5->{}
+                        case 6->{}
+                        case 7->{}
 
                     }
 

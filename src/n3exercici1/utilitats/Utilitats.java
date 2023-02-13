@@ -137,7 +137,7 @@ public class Utilitats {
                     }else{
                         Redactor redactor = redactors.get((seleccio - 1));
                         if(redactors.remove(redactor)){
-                            System.out.println("Redactor eliminat correctament");
+                            System.out.println("Redactor eliminat correctament\n");
                             error = 0;
                         }else{
                             System.out.println("Ha hagut un error inesperat i no se ha eliminat el redactor/a correctament");
