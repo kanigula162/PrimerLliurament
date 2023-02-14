@@ -64,4 +64,14 @@ public class Basquet extends Noticia{
     public void setClub(String club) {
         this.club = club;
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.toString()).append("Competició: ").append(this.getCompeticio()).append("\n");
+        sb.append("Club: ").append(this.getClub()).append("\n");
+
+        return sb.toString();
+    }
 }

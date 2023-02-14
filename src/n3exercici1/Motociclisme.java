@@ -41,4 +41,13 @@ public class Motociclisme extends Noticia{
     public void setEquip(String equip) {
         this.equip = equip;
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.toString()).append("Competició: ").append(this.getEquip()).append("\n");
+
+        return sb.toString();
+    }
 }

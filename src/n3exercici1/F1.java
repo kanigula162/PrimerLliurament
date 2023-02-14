@@ -41,4 +41,13 @@ public class F1 extends Noticia{
     public void setEscuderia(String escuderia) {
         this.escuderia = escuderia;
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.toString()).append("Escuderia: ").append(this.getEscuderia()).append("\n");
+
+        return sb.toString();
+    }
 }

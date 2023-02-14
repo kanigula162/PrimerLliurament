@@ -93,6 +93,7 @@ public class Futbol extends Noticia{
         sb.append(super.toString()).append("Competició: ").append(this.getCompeticio()).append("\n");
         sb.append("Club: ").append(this.getClub()).append("\n");
         sb.append("Jugador: ").append(this.getJugador()).append("\n");
+
         return sb.toString();
     }
 }

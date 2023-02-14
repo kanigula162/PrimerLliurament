@@ -52,4 +52,14 @@ public class Tenis extends Noticia{
     public void setTenista(String tenista) {
         this.tenista = tenista;
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.toString()).append("Competició: ").append(this.getCompeticio()).append("\n");
+        sb.append("Tenista: ").append(this.getTenista()).append("\n");
+
+        return sb.toString();
+    }
 }
