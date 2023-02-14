@@ -68,10 +68,7 @@ public class Basquet extends Noticia {
     @Override
     public String toString() {
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString()).append("Competició: ").append(this.getCompeticio()).append("\n");
-        sb.append("Club: ").append(this.getClub()).append("\n");
-
-        return sb.toString();
+        return super.toString() + "Competició: " + this.getCompeticio() + "\n" +
+                "Club: " + this.getClub() + "\n";
     }
 }

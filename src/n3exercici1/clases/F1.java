@@ -45,9 +45,6 @@ public class F1 extends Noticia {
     @Override
     public String toString() {
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString()).append("Escuderia: ").append(this.getEscuderia()).append("\n");
-
-        return sb.toString();
+        return super.toString() + "Escuderia: " + this.getEscuderia() + "\n";
     }
 }

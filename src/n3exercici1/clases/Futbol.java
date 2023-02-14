@@ -89,11 +89,8 @@ public class Futbol extends Noticia {
     @Override
     public String toString() {
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString()).append("Competició: ").append(this.getCompeticio()).append("\n");
-        sb.append("Club: ").append(this.getClub()).append("\n");
-        sb.append("Jugador: ").append(this.getJugador()).append("\n");
-
-        return sb.toString();
+        return super.toString() + "Competició: " + this.getCompeticio() + "\n" +
+                "Club: " + this.getClub() + "\n" +
+                "Jugador: " + this.getJugador() + "\n";
     }
 }

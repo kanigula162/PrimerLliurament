@@ -3,7 +3,7 @@ package n3exercici1.clases;
 public class Redactor {
 
     private String nom;
-    private String dni;
+    private final String dni;
     private double sou = 1500;
 
     public Redactor(String nom, String dni){

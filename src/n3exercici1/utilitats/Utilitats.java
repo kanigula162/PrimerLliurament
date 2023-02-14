@@ -469,8 +469,8 @@ public class Utilitats {
 
         for (Noticia n:noticies) {
 
-            if(redactor.getDni() == n.getRedactor().getDni()){
-                System.out.println(n.toString());
+            if(redactor.getDni().equalsIgnoreCase(n.getRedactor().getDni())){
+                System.out.println(n);
             }
         }
 

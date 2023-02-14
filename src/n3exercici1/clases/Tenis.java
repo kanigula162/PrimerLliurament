@@ -1,7 +1,5 @@
 package n3exercici1.clases;
 
-import n3exercici1.clases.Noticia;
-
 public class Tenis extends Noticia {
 
     private String competicio;
@@ -58,10 +56,7 @@ public class Tenis extends Noticia {
     @Override
     public String toString() {
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString()).append("Competició: ").append(this.getCompeticio()).append("\n");
-        sb.append("Tenista: ").append(this.getTenista()).append("\n");
-
-        return sb.toString();
+        return super.toString() + "Competició: " + this.getCompeticio() + "\n" +
+                "Tenista: " + this.getTenista() + "\n";
     }
 }

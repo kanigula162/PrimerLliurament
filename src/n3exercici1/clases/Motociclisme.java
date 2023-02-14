@@ -45,9 +45,6 @@ public class Motociclisme extends Noticia {
     @Override
     public String toString() {
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString()).append("Competició: ").append(this.getEquip()).append("\n");
-
-        return sb.toString();
+        return super.toString() + "Competició: " + this.getEquip() + "\n";
     }
 }

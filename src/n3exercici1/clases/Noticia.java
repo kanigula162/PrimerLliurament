@@ -60,10 +60,8 @@ public abstract class Noticia {
             this.setText("Contingut buit...");
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("Titular: ").append(getTitular()).append("\n");
-        sb.append("Text: ").append(getText()).append("\n");
+        return "Titular: " + getTitular() + "\n" +
+                "Text: " + getText() + "\n";
 
-        return sb.toString();
     }
 }
