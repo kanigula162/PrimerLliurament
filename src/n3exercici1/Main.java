@@ -47,14 +47,16 @@ public class Main {
                         case 3->{
 
                             if(Utilitats.hiHaRedactors(redactors)){
-                                Utilitats.crearNoticia();
+                                Utilitats.crearNoticia(Utilitats.seleccionarRedactor(redactors), noticies);
                             }else{
-                                System.out.println(">>> No hi ha redactors donats d'alta, per favor, doni d'alta algún redactor primer\n");
+                                System.out.println(">>> No hi ha redactors donats d'alta, per favor doni d'alta algún redactor primer\n");
                             }
                         }
 
                         case 4->{}
-                        case 5->{}
+                        case 5->{
+                            Utilitats.mostrarNoticiesPerRedactor(Utilitats.seleccionarRedactor(redactors), noticies);
+                        }
                         case 6->{}
                         case 7->{}
 

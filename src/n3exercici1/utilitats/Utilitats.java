@@ -1,6 +1,6 @@
 package n3exercici1.utilitats;
 
-import n3exercici1.Redactor;
+import n3exercici1.*;
 import n3exercici1.exceptions.ErrorDNI;
 import n3exercici1.exceptions.ErrorNom;
 import n3exercici1.exceptions.ErrorSeleccio;
@@ -163,13 +163,14 @@ public class Utilitats {
         return redactors.size() > 0;
     }
 
-    public static void crearNoticia(){
+    public static void crearNoticia(Redactor redactor, ArrayList<Noticia> noticies){
 
         boolean tornar = true;
         int seleccio = 0;
-        String titular, competicio, club, jugador, tenistes, escuderia, equip;
+        String titular, competicio, club, jugador, tenistes, escuderia, equip, text;
 
         do{
+
             try{
                 System.out.println("\nSeleccioni la categoria: ");
                 System.out.println("1 - Futbol");
@@ -194,7 +195,7 @@ public class Utilitats {
                 }
 
             }catch (InputMismatchException e){
-                System.out.println(">>> El dígit introduït no es correcta\n");
+                System.out.println(">>> Els dígits introduït no són correctes\n");
             }catch (ErrorSeleccio e){
                 System.out.println(e.getMessage());
             }
@@ -202,34 +203,136 @@ public class Utilitats {
         }while (tornar);
 
         switch (seleccio){
-            case 1:
+            case 1->{
+
                 titular = dadesNoticia("titular");
                 competicio = dadesNoticia("competició");
                 club = dadesNoticia("club");
                 jugador = dadesNoticia("jugador");
 
-                break;
-            case 2:
+                text = crearTextNoticia();
 
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
+                Futbol futbol = new Futbol(titular, competicio, club, jugador);
+
+                if(!text.isEmpty()){
+                    futbol.setText(text);
+                }
+
+                futbol.setRedactor(redactor);
+
+                if(noticies.add(futbol)){
+                    System.out.println("Notícia assignada correctament al redactor/a\n");
+                }else{
+                    System.out.println(">>> Ha ocorregut un error inesperat i no s'ha assignat la notícia al redactor/a\n");
+                }
+
+            }
+            case 2->{
+
+                titular = dadesNoticia("titular");
+                competicio = dadesNoticia("competició");
+                club = dadesNoticia("club");
+
+                text = crearTextNoticia();
+
+                Basquet basquet = new Basquet(titular, competicio, club);
+
+                if(!text.isEmpty()){
+                    basquet.setText(text);
+                }
+
+                basquet.setRedactor(redactor);
+
+                if(noticies.add(basquet)){
+                    System.out.println("Notícia assignada correctament al redactor/a\n");
+                }else{
+                    System.out.println(">>> Ha ocorregut un error inesperat i no s'ha assignat la notícia al redactor/a\n");
+                }
+            }
+            case 3->{
+
+                titular = dadesNoticia("titular");
+                competicio = dadesNoticia("competició");
+                tenistes = dadesNoticia("tenista");
+
+                text = crearTextNoticia();
+
+                Tenis tenis = new Tenis(titular, competicio, tenistes);
+
+                if(!text.isEmpty()){
+                    tenis.setText(text);
+                }
+
+                tenis.setRedactor(redactor);
+
+                if(noticies.add(tenis)){
+                    System.out.println("Notícia assignada correctament al redactor/a\n");
+                }else{
+                    System.out.println(">>> Ha ocorregut un error inesperat i no s'ha assignat la notícia al redactor/a\n");
+                }
+            }
+            case 4->{
+
+                titular = dadesNoticia("titular");
+                escuderia = dadesNoticia("escuderia");
+
+                text = crearTextNoticia();
+
+                F1 f1 = new F1(titular, escuderia);
+
+                if(!text.isEmpty()){
+                    f1.setText(text);
+                }
+
+                f1.setRedactor(redactor);
+
+                if(noticies.add(f1)){
+                    System.out.println("Notícia assignada correctament al redactor/a\n");
+                }else{
+                    System.out.println(">>> Ha ocorregut un error inesperat i no s'ha assignat la notícia al redactor/a\n");
+                }
+
+            }
+            case 5->{
+
+                titular = dadesNoticia("titular");
+                equip = dadesNoticia("equip");
+
+                text = crearTextNoticia();
+
+                Motociclisme motociclisme = new Motociclisme(titular, equip);
+
+                if(!text.isEmpty()){
+                    motociclisme.setText(text);
+                }
+
+                motociclisme.setRedactor(redactor);
+
+                if(noticies.add(motociclisme)){
+                    System.out.println("Notícia assignada correctament al redactor/a\n");
+                }else{
+                    System.out.println(">>> Ha ocorregut un error inesperat i no s'ha assignat la notícia al redactor/a\n");
+                }
+
+            }
         }
 
     }
-
 
     private static String dadesNoticia(String camp){
 
         boolean tornar = true;
         String dada;
+        boolean b;
 
         do{
-            if(camp.equalsIgnoreCase("competició") || camp.equalsIgnoreCase("competicio")){
+
+            b =
+                    camp.equalsIgnoreCase("competició") ||
+                    camp.equalsIgnoreCase("competicio") ||
+                    camp.equalsIgnoreCase("escuderia");
+
+            if(b){
                 System.out.println("Introdueix les dades de la " + camp + ": ");
             }else{
                 System.out.println("Introdueix les dades del " + camp + ": ");
@@ -239,13 +342,13 @@ public class Utilitats {
             dada = sc.nextLine();
 
             if(dada.isEmpty()){
-                if(camp.equalsIgnoreCase("competició") || camp.equalsIgnoreCase("competicio")){
+                if(b){
                     System.out.println(">>> Les dades de la " + camp + " no pot estar buida\n");
                 }else{
                     System.out.println(">>> les dades del " + camp + " no pot estar buit\n");
                 }
             }else if (dada.length() < 5) {
-                if(camp.equalsIgnoreCase("competició") || camp.equalsIgnoreCase("competicio")){
+                if(b){
                     System.out.println(">>> Les dades de la " +  camp + " ha de contenir com a minim 5 caràcters");
                 }else{
                     System.out.println(">>> Les dades del " +  camp + " ha de contenir com a minim 5 caràcters");
@@ -300,5 +403,77 @@ public class Utilitats {
 
         return text;
 
+    }
+
+    public static Redactor seleccionarRedactor(ArrayList<Redactor> redactors){
+
+        int index;
+        int seleccio;
+        int error;
+        Redactor redactor = null;
+
+        if(redactors.isEmpty()){
+            System.out.println(">>> No hi ha cap redactor/a creats\n");
+        }else{
+
+            do{
+                index = 1;
+
+                for (Redactor r:redactors) {
+                    System.out.println(index + " - Nombre: " + r.getNom() + " DNI: " + r.getDni());
+                    index++;
+                }
+
+                try{
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println("Selecciona el redactor/a que vols assignar a la nova notícia:");
+                    seleccio = sc.nextInt();
+
+                    if(redactors.size() < seleccio){
+                        throw new ErrorSeleccio(">>> El valor seleccionat no pertany a cap redactor\n");
+                    }else if(seleccio < 1){
+                        throw new ErrorSeleccio(">>> El valor no pot ser cero o negatiu\n");
+                    }else{
+
+                        redactor = redactors.get(seleccio -1);
+
+                        if(redactor != null){
+                            System.out.println("Redactor/a assignat correctament\n");
+                            error = 0;
+                        }else{
+                            System.out.println(">>> Ha ocorregut un error inesperat i no s'ha pogut assignar el redactor/a");
+                            error = 1;
+                        }
+
+                    }
+
+                }catch (ErrorSeleccio e){
+                    error = 1;
+                    System.out.println(e.getMessage());
+                }catch (InputMismatchException e){
+                    error = 1;
+                    System.out.println(">>> El valor introduït no es correcta\n");
+                }
+
+            }while (error != 0);
+
+        }
+
+        return redactor;
+    }
+
+    public static void mostrarNoticiesPerRedactor(Redactor redactor, ArrayList<Noticia> noticies){
+
+        System.out.println("### Llistat noticies del redactor/a " + redactor.getNom() + " ###");
+        System.out.println("<###############################################################################>\n");
+
+        for (Noticia n:noticies) {
+
+            if(redactor.getDni() == n.getRedactor().getDni()){
+                System.out.println(n.toString());
+            }
+        }
+
+        System.out.println("---------------------------------------------------\n");
     }
 }

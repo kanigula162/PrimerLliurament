@@ -23,10 +23,6 @@ public class Redactor {
         return dni;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
     public double getSou() {
         return sou;
     }

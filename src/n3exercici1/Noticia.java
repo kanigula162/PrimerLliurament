@@ -1,11 +1,16 @@
 package n3exercici1;
 
-public class Noticia {
+import java.util.ArrayList;
+import java.util.Map;
+
+public abstract class Noticia {
 
     private String titular;
     private String text = "";
     private int puntuacio;
     private int preu;
+
+    private Redactor redactor;
 
     public Noticia(String titular){
         this.titular = titular;
@@ -43,4 +48,25 @@ public class Noticia {
         this.preu = preu;
     }
 
+    public Redactor getRedactor() {
+        return redactor;
+    }
+
+    public void setRedactor(Redactor redactor) {
+        this.redactor = redactor;
+    }
+
+    @Override
+    public String toString() {
+
+        if(this.getText().isEmpty()){
+            this.setText("Contingut buit...");
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("Titular: ").append(getTitular()).append("\n");
+        sb.append("Text: ").append(getText()).append("\n");
+
+        return sb.toString();
+    }
 }
