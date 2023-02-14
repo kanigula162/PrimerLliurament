@@ -1,6 +1,8 @@
-package n3exercici1;
+package n3exercici1.clases;
 
-public class Tenis extends Noticia{
+import n3exercici1.clases.Noticia;
+
+public class Tenis extends Noticia {
 
     private String competicio;
     private String tenista;

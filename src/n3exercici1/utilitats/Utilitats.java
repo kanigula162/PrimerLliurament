@@ -1,6 +1,6 @@
 package n3exercici1.utilitats;
 
-import n3exercici1.*;
+import n3exercici1.clases.*;
 import n3exercici1.exceptions.ErrorDNI;
 import n3exercici1.exceptions.ErrorNom;
 import n3exercici1.exceptions.ErrorSeleccio;

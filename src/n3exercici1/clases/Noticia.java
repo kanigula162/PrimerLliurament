@@ -1,7 +1,4 @@
-package n3exercici1;
-
-import java.util.ArrayList;
-import java.util.Map;
+package n3exercici1.clases;
 
 public abstract class Noticia {
 

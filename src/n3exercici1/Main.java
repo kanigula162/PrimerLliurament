@@ -1,5 +1,7 @@
 package n3exercici1;
 
+import n3exercici1.clases.Noticia;
+import n3exercici1.clases.Redactor;
 import n3exercici1.utilitats.Utilitats;
 
 import java.util.ArrayList;
@@ -54,9 +56,7 @@ public class Main {
                         }
 
                         case 4->{}
-                        case 5->{
-                            Utilitats.mostrarNoticiesPerRedactor(Utilitats.seleccionarRedactor(redactors), noticies);
-                        }
+                        case 5->  Utilitats.mostrarNoticiesPerRedactor(Utilitats.seleccionarRedactor(redactors), noticies);
                         case 6->{}
                         case 7->{}
 

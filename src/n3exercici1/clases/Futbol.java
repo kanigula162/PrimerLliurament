@@ -1,6 +1,6 @@
-package n3exercici1;
+package n3exercici1.clases;
 
-public class Futbol extends Noticia{
+public class Futbol extends Noticia {
 
     private String competicio;
     private String club;
