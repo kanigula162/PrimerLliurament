@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int seleccio;
+        int selection;
         ArrayList<Redactor> redactors = new ArrayList<>();
         ArrayList<Noticia> noticies = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
@@ -28,13 +28,13 @@ public class Main {
 
             try{
                 System.out.println("\nSeleccioni una opció:");
-                seleccio = Integer.parseInt(sc.next());
+                selection = Integer.parseInt(sc.next());
 
-                if(seleccio < 1 || seleccio > 8){
+                if(selection < 1 || selection > 8){
                     System.out.println("\n>>> Seleccioni un valor del 1 al 8 siusplau <<<\n");
                 }else{
 
-                    switch (seleccio){
+                    switch (selection){
 
                         case 1->{
 
@@ -65,10 +65,10 @@ public class Main {
                 }
 
             }catch (Exception e){
-                seleccio = 0;
+                selection = 0;
                 System.out.println("\n>>> Seleccioni un valor numèric del 1 al 8 siusplau <<<\n");
             }
-        }while(seleccio != 8);
+        }while(selection != 8);
 
         System.out.println("\n#########> FI DEL PROGRAMA <##########");
         System.exit(0);

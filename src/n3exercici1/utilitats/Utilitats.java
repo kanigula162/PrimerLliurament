@@ -110,7 +110,7 @@ public class Utilitats {
     public static void eliminarRedactors(ArrayList<Redactor> redactors){
 
         int index;
-        int seleccio;
+        int selection;
         int error;
 
         if(redactors.isEmpty()){
@@ -128,14 +128,14 @@ public class Utilitats {
                 try{
                     Scanner sc = new Scanner(System.in);
                     System.out.println("Selecciona el redactor/a que desitges eliminar:");
-                    seleccio = sc.nextInt();
+                    selection = sc.nextInt();
 
-                    if(redactors.size() < seleccio){
+                    if(redactors.size() < selection){
                         throw new ErrorSeleccio(">>> El valor seleccionat no pertany a cap redactor\n");
-                    }else if(seleccio < 1){
+                    }else if(selection < 1){
                         throw new ErrorSeleccio(">>> El valor no pot ser cero o negatiu\n");
                     }else{
-                        Redactor redactor = redactors.get((seleccio - 1));
+                        Redactor redactor = redactors.get((selection - 1));
                         if(redactors.remove(redactor)){
                             System.out.println("Redactor eliminat correctament\n");
                             error = 0;
@@ -166,7 +166,7 @@ public class Utilitats {
     public static void crearNoticia(Redactor redactor, ArrayList<Noticia> noticies){
 
         boolean tornar = true;
-        int seleccio = 0;
+        int select = 0;
         String titular, competicio, club, jugador, tenistes, escuderia, equip, text;
 
         do{
@@ -180,17 +180,17 @@ public class Utilitats {
                 System.out.println("5 - Motociclisme");
                 System.out.println("Seleccioni una opció:");
                 Scanner sc = new Scanner(System.in);
-                seleccio = sc.nextInt();
+                select = sc.nextInt();
 
-                if(seleccio >= 1 && seleccio <= 5){
+                if(select >= 1 && select <= 5){
                     tornar = false;
                 }
 
-                if(seleccio <= 0){
+                if(select <= 0){
                     throw new ErrorSeleccio(">>> La selecció no pot ser cero o números negatius\n");
                 }
 
-                if(seleccio > 5){
+                if(select > 5){
                     throw new ErrorSeleccio(">>> La selecció no pot ser superior a les opcions disponibles\n");
                 }
 
@@ -202,7 +202,7 @@ public class Utilitats {
 
         }while (tornar);
 
-        switch (seleccio){
+        switch (select){
             case 1->{
 
                 titular = dadesNoticia("titular");
@@ -364,7 +364,7 @@ public class Utilitats {
     private static String crearTextNoticia(){
 
         boolean sortir = true;
-        int eleccio = 0;
+        int election = 0;
         String text = "";
 
         do{
@@ -374,9 +374,9 @@ public class Utilitats {
                 System.out.println("1 - Sí");
                 System.out.println("2 - No");
                 Scanner sc = new Scanner(System.in);
-                eleccio = sc.nextInt();
+                election = sc.nextInt();
 
-                if(eleccio == 1 || eleccio == 2){
+                if(election == 1 || election == 2){
                     sortir = false;
                 }
             }catch (InputMismatchException e){
@@ -387,7 +387,7 @@ public class Utilitats {
 
         sortir = true;
 
-        if(eleccio == 1){
+        if(election == 1){
             do{
                 System.out.println("Escriu el teu text: ");
                 Scanner sc = new Scanner(System.in);
@@ -408,7 +408,7 @@ public class Utilitats {
     public static Redactor seleccionarRedactor(ArrayList<Redactor> redactors){
 
         int index;
-        int seleccio;
+        int select;
         int error;
         Redactor redactor = null;
 
@@ -427,15 +427,15 @@ public class Utilitats {
                 try{
                     Scanner sc = new Scanner(System.in);
                     System.out.println("Selecciona el redactor/a que vols assignar a la nova notícia:");
-                    seleccio = sc.nextInt();
+                    select = sc.nextInt();
 
-                    if(redactors.size() < seleccio){
+                    if(redactors.size() < select){
                         throw new ErrorSeleccio(">>> El valor seleccionat no pertany a cap redactor\n");
-                    }else if(seleccio < 1){
+                    }else if(select < 1){
                         throw new ErrorSeleccio(">>> El valor no pot ser cero o negatiu\n");
                     }else{
 
-                        redactor = redactors.get(seleccio -1);
+                        redactor = redactors.get(select -1);
 
                         if(redactor != null){
                             System.out.println("Redactor/a assignat correctament\n");
