@@ -24,7 +24,7 @@ public class Utilitats {
             try{
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Introdueix el nom del redactor:");
-                nom = sc.nextLine();
+                nom = sc.nextLine().trim();
 
                 if(nom.isEmpty()){
                     throw new ErrorNom(">>> El nom no pot estar en blanc\n");
@@ -71,7 +71,7 @@ public class Utilitats {
             try{
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Introdueix el DNI del redactor (ex. 12345678Z):");
-                dni = sc.next();
+                dni = sc.next().trim();
 
                 if(dni.isEmpty()){
                     throw new ErrorDNI(">>> El DNI no pot estar en blanc\n");
