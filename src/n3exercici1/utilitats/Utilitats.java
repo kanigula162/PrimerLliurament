@@ -30,7 +30,7 @@ public class Utilitats {
                     throw new ErrorNom(">>> El nom no pot estar en blanc\n");
                 }
 
-                if(!nom.matches("[a-zA-ZàáèéíòóúÀÁÈÉÍÒÓÚ]+([ '-][a-zA-ZàáèéíòóúÀÁÈÉÍÒÓÚ]+)*")){
+                if(!nom.matches("[a-zàáèéíòóúñçA-ZÀÁÈÉÍÒÓÚÑÇ]+([ '-][a-zàáèéíòóúñçA-ZÀÁÈÉÍÒÓÚÑÇ]+)*")){
                     throw new ErrorNom(">>> El nom introduït te caràcters no vàlids\n");
                 }else{
                     errors = 0;
@@ -135,7 +135,9 @@ public class Utilitats {
                     }else if(selection < 1){
                         throw new ErrorSeleccio(">>> El valor no pot ser cero o negatiu\n");
                     }else{
+
                         Redactor redactor = redactors.get((selection - 1));
+
                         if(redactors.remove(redactor)){
                             System.out.println("Redactor eliminat correctament\n");
                             error = 0;
@@ -347,11 +349,11 @@ public class Utilitats {
                 }else{
                     System.out.println(">>> les dades del " + camp + " no pot estar buit\n");
                 }
-            }else if (dada.length() < 5) {
+            }else if (dada.length() < 3) {
                 if(b){
-                    System.out.println(">>> Les dades de la " +  camp + " ha de contenir com a minim 5 caràcters");
+                    System.out.println(">>> Les dades de la " +  camp + " ha de contenir com a minim 3 caràcters");
                 }else{
-                    System.out.println(">>> Les dades del " +  camp + " ha de contenir com a minim 5 caràcters");
+                    System.out.println(">>> Les dades del " +  camp + " ha de contenir com a minim 3 caràcters");
                 }
             }else{
                 tornar = false;
@@ -419,14 +421,18 @@ public class Utilitats {
             do{
                 index = 1;
 
+                System.out.println("\n### Llistat de redactors/as ###");
+
                 for (Redactor r:redactors) {
                     System.out.println(index + " - Nombre: " + r.getNom() + " DNI: " + r.getDni());
                     index++;
                 }
 
+                System.out.println("\n");
+
                 try{
                     Scanner sc = new Scanner(System.in);
-                    System.out.println("Selecciona el redactor/a que vols assignar a la nova notícia:");
+                    System.out.println("Selecciona el redactor/a:");
                     select = sc.nextInt();
 
                     if(redactors.size() < select){
@@ -475,5 +481,93 @@ public class Utilitats {
         }
 
         System.out.println("---------------------------------------------------\n");
+    }
+
+    public static void calcularPuntuacioNoticia(ArrayList<Noticia> noticies){
+
+        if(noticies.isEmpty()){
+            System.out.println(">>> No hi ha cap notícia creada\n");
+        }else{
+
+            boolean tornar = true;
+            int select;
+
+            do{
+
+                try{
+
+                    select = Utilitats.llistarTitulars(noticies);
+
+                    if(noticies.size() < select){
+                        throw new ErrorSeleccio(">>> El valor seleccionat no pertany a cap titular\n");
+                    }else if(select < 1){
+                        throw new ErrorSeleccio(">>> El valor no pot ser cero o negatiu\n");
+                    }else{
+                        System.out.println("\nLa puntuació de la noticia es: " + noticies.get(select - 1).getPuntuacio() + " punts\n");
+                        tornar = false;
+                    }
+
+                }catch (ErrorSeleccio e){
+                    System.out.println(e.getMessage());
+                }catch (InputMismatchException e){
+                    System.out.println(">>> El valor introduït no es correcta\n");
+                }
+
+            }while(tornar);
+
+
+        }
+    }
+
+    public static void calcularPreuNoticia(ArrayList<Noticia> noticies){
+
+        if(noticies.isEmpty()){
+            System.out.println(">>> No hi ha cap notícia creada\n");
+        }else{
+
+            boolean tornar = true;
+            int select;
+
+            do{
+
+                try{
+
+                    select = Utilitats.llistarTitulars(noticies);
+
+                    if(noticies.size() < select){
+                        throw new ErrorSeleccio(">>> El valor seleccionat no pertany a cap titular\n");
+                    }else if(select < 1){
+                        throw new ErrorSeleccio(">>> El valor no pot ser cero o negatiu\n");
+                    }else{
+                        System.out.println("\nEl preu de la noticia es: " + noticies.get(select - 1).getPreu() + " euros\n");
+                        tornar = false;
+                    }
+
+                }catch (ErrorSeleccio e){
+                    System.out.println(e.getMessage());
+                }catch (InputMismatchException e){
+                    System.out.println(">>> El valor introduït no es correcta\n");
+                }
+
+            }while(tornar);
+
+
+        }
+    }
+
+    private static int llistarTitulars(ArrayList<Noticia> noticies){
+
+        int index = 1;
+
+        System.out.println("\n### Llistat de titulars ###");
+        for (Noticia n:noticies) {
+            System.out.println(index + " - " + n.getTitular());
+            index++;
+        }
+
+
+        System.out.println("\nSeleccioni un titular:");
+        Scanner sc = new Scanner(System.in);
+        return sc.nextInt();
     }
 }
