@@ -44,7 +44,7 @@ public class Main {
                             System.out.println("Redactor/a creat/da correctament\n");
                         }
 
-                        case 2-> Utilitats.eliminarRedactors(redactors);
+                        case 2-> Utilitats.eliminarRedactors(redactors, noticies);
 
                         case 3->{
 

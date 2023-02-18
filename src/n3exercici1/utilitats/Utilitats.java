@@ -107,15 +107,17 @@ public class Utilitats {
         return dni;
     }
 
-    public static void eliminarRedactors(ArrayList<Redactor> redactors){
+    public static void eliminarRedactors(ArrayList<Redactor> redactors, ArrayList<Noticia> noticies){
 
         int index;
         int selection;
         int error;
+        boolean eliminar = true;
 
         if(redactors.isEmpty()){
             System.out.println(">>> No hi ha cap redactor/a creats\n");
         }else{
+
 
             do{
                 index = 1;
@@ -138,14 +140,25 @@ public class Utilitats {
 
                         Redactor redactor = redactors.get((selection - 1));
 
-                        if(redactors.remove(redactor)){
-                            System.out.println("Redactor eliminat correctament\n");
-                            error = 0;
-                        }else{
-                            System.out.println("Ha hagut un error inesperat i no se ha eliminat el redactor/a correctament");
-                            error = 1;
+                        for (Noticia n:noticies) {
+                            if (redactor.getDni().equalsIgnoreCase(n.getRedactor().getDni())){
+                                System.out.println(">>> El redactor/a " + redactor.getNom() + "te noticies encare assignades, siusplau elimini primer les notícies\n");
+                                eliminar = false;
+                                break;
+                            }
                         }
 
+                        if (eliminar){
+                            if(redactors.remove(redactor)){
+                                System.out.println("Redactor eliminat correctament\n");
+                                error = 0;
+                            }else{
+                                System.out.println("Ha hagut un error inesperat i no se ha eliminat el redactor/a correctament");
+                                error = 1;
+                            }
+                        }else{
+                            error = 0;
+                        }
                     }
 
                 }catch (ErrorSeleccio e){
