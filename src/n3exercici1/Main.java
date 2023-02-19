@@ -55,7 +55,7 @@ public class Main {
                             }
                         }
 
-                        case 4->{}
+                        case 4-> Utilitats.eliminarNoticia(redactors, noticies);
                         case 5-> Utilitats.mostrarNoticiesPerRedactor(Utilitats.seleccionarRedactor(redactors), noticies);
                         case 6-> Utilitats.calcularPuntuacioNoticia(noticies);
                         case 7-> Utilitats.calcularPreuNoticia(noticies);

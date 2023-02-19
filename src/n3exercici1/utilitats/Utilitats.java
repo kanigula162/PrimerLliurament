@@ -583,4 +583,80 @@ public class Utilitats {
         Scanner sc = new Scanner(System.in);
         return sc.nextInt();
     }
+
+    private static int seleccionarTitularPerRedactor(Redactor redactor, ArrayList<Noticia> noticies){
+
+        int index;
+        int contador;
+        boolean control = false;
+        int error;
+        int select = 0;
+
+        for (Noticia n:noticies) {
+            if (n.getRedactor().getDni().equalsIgnoreCase(redactor.getDni())){
+                control = true;
+                break;
+            }
+        }
+
+        if (control) {
+
+            do{
+                try{
+
+                    index = 1;
+                    contador = 0;
+
+                    System.out.println("\n### Llistat de titulars ###");
+                    for (Noticia n:noticies) {
+                        if (redactor.getDni().equalsIgnoreCase(n.getRedactor().getDni())){
+                            System.out.println(index + " - " + n.getTitular());
+                            index++;
+                            contador++;
+                        }
+                    }
+
+                    System.out.println("\nSeleccioni el titular:");
+                    Scanner sc = new Scanner(System.in);
+                    select = sc.nextInt();
+
+                    if(contador < select){
+                        throw new ErrorSeleccio(">>> El valor seleccionat no pertany a cap titular\n");
+                    }else if(select < 1){
+                        throw new ErrorSeleccio(">>> El valor no pot ser cero o negatiu\n");
+                    }
+
+                    error = 0;
+
+                }catch (ErrorSeleccio e){
+                    error = 1;
+                    System.out.println(e.getMessage());
+                }catch (InputMismatchException e){
+                    error = 1;
+                    System.out.println(">>> El valor introduït no es correcta\n");
+                }
+
+
+            }while (error != 0);
+
+        }else{
+            System.out.println(">>> El redactor seleccionat no te cap noticia assignada\n");
+        }
+
+        return select;
+    }
+
+    public static void eliminarNoticia(ArrayList<Redactor> redactors, ArrayList<Noticia> noticies){
+
+        Redactor redactor = seleccionarRedactor(redactors);
+
+        int select = seleccionarTitularPerRedactor(redactor, noticies);
+
+        if (noticies.remove(select - 1) != null){
+            System.out.println("### La noticia ha estat eliminada correctament ###\n");
+        }else{
+            System.out.println(">>> Ha ocorregut un error inesperat al intentar eliminar la noticia\n");
+        }
+
+    }
 }
